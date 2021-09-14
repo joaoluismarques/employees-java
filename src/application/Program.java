@@ -23,7 +23,7 @@ public class Program {
 		System.out.print("Enter salary: ");
 		double baseSalary = sc.nextDouble();
 		System.out.print("Letra inicial: ");
-		char letra = sc.next().charAt(0);
+		char l = sc.next().charAt(0);
 		
 		try(BufferedReader br = new BufferedReader(new FileReader(path))) {
 			List<Employee> emp = new ArrayList<>();
@@ -44,14 +44,14 @@ public class Program {
 					.sorted(comp)
 					.collect(Collectors.toList());			
 			
-			double sumNameWithM = emp.stream()
-					.filter(x -> x.getName().charAt(0) == letra)
+			double sumName = emp.stream()
+					.filter(x -> x.getName().charAt(0) == l)
 					.map(x -> x.getSalary())
 					.reduce(0.0, (x, y) -> x + y);
 			System.out.println("Email of people whose salary is more than 2000.00:");
 			higherSalaries.forEach(System.out::println);
 					
-			System.out.printf("Sum of salary of people whose name starts with 'M': %.2f%n", sumNameWithM);		
+			System.out.printf("Sum of salary of people whose name starts with: %.2f%n", sumName);		
 					
 					
 			
